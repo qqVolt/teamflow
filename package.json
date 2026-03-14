@@ -1,0 +1,25 @@
+{
+  "name": "teamflow-taskmanager",
+  "version": "1.0.0",
+  "description": "Веб-приложение для управления задачами в команде — TeamFlow",
+  "main": "src/app.js",
+  "scripts": {
+    "start":    "node src/app.js",
+    "test":     "jest --coverage --verbose",
+    "lint":     "eslint src/ bad-code/ --ext .js",
+    "lint:fix": "eslint src/ --ext .js --fix"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.js"],
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": ["src/**/*.js"]
+  },
+  "keywords": ["kanban", "task-manager", "agile", "teamflow"],
+  "author": "Student",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "jest":   "^29.7.0"
+  }
+}
