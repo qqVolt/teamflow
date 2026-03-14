@@ -5,7 +5,6 @@ const TaskService            = require('./services/TaskService');
 const UserService            = require('./services/UserService');
 const Sprint                 = require('./models/Sprint');
 const TaskManagementFacade   = require('./patterns/TaskManagementFacade');
-const { Task }               = require('./models/Task');
 const Project                = require('./models/Project');
 const storage                = require('./storage/InMemoryStorage');
 
