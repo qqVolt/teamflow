@@ -17,8 +17,8 @@ npm run lint    # Проверка кода ESLint
 | src/services/ | Бизнес-логика: TaskService, UserService                  |
 | src/storage/  | InMemoryStorage (Singleton)                              |
 | tests/        | Jest unit-тесты                                          |
-| bad-code/     | Намеренно плохой код для PI-19                           |
-| docs/         | Документация по PI-19..PI-24                             |
+| bad-code/     | Намеренно плохой код для ПЗ_19                           |
+| docs/         | Документация по ПЗ_19..ПЗ_24                             |
 
 
 ***
@@ -34,11 +34,11 @@ npm install
 npm start
 # 3. Запустить тесты
 npm test
-# 4. Проверить плохой код (PI-19 — ожидаешь 13 ошибок)
+# 4. Проверить плохой код (ПЗ_19 — ожидаешь 13 ошибок)
 npx eslint bad-code/TaskBad.js
-# 5. Проверить хороший код (PI-19 — ожидаешь 0 ошибок)
+# 5. Проверить хороший код (ПЗ_19 — ожидаешь 0 ошибок)
 npx eslint src/
-# 6. Git (PI-22)
+# 6. Git (ПЗ_22)
 git init
 git branch -M main
 git add .

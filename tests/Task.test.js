@@ -38,7 +38,7 @@ describe('Task — модель задачи', () => {
     });
   });
 
-  describe('Наследование и полиморфизм (PI-13)', () => {
+  describe('Наследование и полиморфизм (ПЗ_13)', () => {
     test('Task instanceof Project', () => {
       expect(new Task({ title: 'T' }) instanceof Project).toBe(true);
     });

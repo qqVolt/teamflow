@@ -28,7 +28,7 @@ class Project {
 
   setDescription(val) { this.#description = val ? val.trim() : ''; }
 
-  /** Полиморфный метод — переопределяется в Task (PI-13) */
+  /** Полиморфный метод — переопределяется в Task (ПЗ_13) */
   getInfo() { return `[Project] ${this.#title}`; }
 
   static generateId(prefix) {

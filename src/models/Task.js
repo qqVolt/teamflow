@@ -5,7 +5,7 @@ const Project = require('./Project');
 const VALID_PRIORITIES = ['low', 'medium', 'high', 'urgent'];
 const VALID_STATUSES   = ['todo', 'in_progress', 'review', 'done'];
 
-/** Task наследует Project — демонстрация наследования и полиморфизма (PI-13) */
+/** Task наследует Project — демонстрация наследования и полиморфизма (ПЗ_13) */
 class Task extends Project {
   #priority;
   #status;
@@ -114,7 +114,7 @@ class Task extends Project {
     return { valid: errors.length === 0, errors };
   }
 
-  /** Полиморфизм — переопределяет Project.getInfo() (PI-13) */
+  /** Полиморфизм — переопределяет Project.getInfo() (ПЗ_13) */
   getInfo() {
     return `[Task] ${this.getTitle()} | ${this.#status} | ${this.#priority} | SP: ${this.#storyPoints}`;
   }

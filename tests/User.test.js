@@ -42,7 +42,7 @@ describe('User — модель пользователя', () => {
     });
   });
 
-  describe('Права доступа (PI-7)', () => {
+  describe('Права доступа (ПЗ_7)', () => {
     test('admin имеет все права', () => {
       const a = new User({ name: 'A', email: 'a@b.ru', password: 'aaa111', role: 'admin' });
       expect(a.hasPermission('manage_users')).toBe(true);
