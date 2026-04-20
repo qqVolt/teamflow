@@ -36,9 +36,7 @@ describe('User — модель пользователя', () => {
     });
 
     test('ошибка: пароль < 6 символов', () => {
-      const r = new User({ name: 'A', email: 'a@b.ru', password: '123' }).validate();
-      expect(r.valid).toBe(false);
-      expect(r.errors.some((e) => e.includes('Пароль'))).toBe(true);
+      expect(() => new User({ name: 'A', email: 'a@b.ru', password: '123' })).toThrow('Пароль');
     });
   });
 

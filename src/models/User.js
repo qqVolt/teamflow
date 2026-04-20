@@ -1,6 +1,7 @@
 'use strict';
 
-const Project = require('./Project');
+const bcrypt   = require('bcrypt');
+const Project  = require('./Project');
 
 const VALID_ROLES = ['admin', 'manager', 'developer', 'viewer'];
 const ROLE_PERMISSIONS = {
@@ -10,15 +11,23 @@ const ROLE_PERMISSIONS = {
   viewer:    ['read']
 };
 
+const SALT_ROUNDS = 10;
+
 class User {
-  #password;
+  #passwordHash;
 
   constructor(data) {
     this.id        = Project.generateId('USR');
     this.name      = data.name  ? data.name.trim()                : '';
     this.email     = data.email ? data.email.trim().toLowerCase() : '';
     this.role      = data.role  || 'developer';
-    this.#password = data.password || '';
+    this.#passwordHash = data.passwordHash || null;
+    if (data.password) {
+      if (data.password.length < 6) {
+        throw new Error('Пароль должен содержать минимум 6 символов');
+      }
+      this.#passwordHash = bcrypt.hashSync(data.password, SALT_ROUNDS);
+    }
     this.isActive  = true;
     this.createdAt = new Date();
   }
@@ -28,14 +37,16 @@ class User {
     return Array.isArray(allowed) && allowed.includes(permission);
   }
 
-  checkPassword(password) { return this.#password === password; }
+  checkPassword(password) {
+    return bcrypt.compareSync(password, this.#passwordHash || '');
+  }
 
   validate() {
     const errors = [];
     if (!this.name  || this.name.length === 0)   { errors.push('Имя пользователя обязательно'); }
     if (!this.email || !this.email.includes('@')) { errors.push('Некорректный email'); }
-    if (!this.#password || this.#password.length < 6) {
-      errors.push('Пароль должен содержать минимум 6 символов');
+    if (!this.#passwordHash) {
+      errors.push('Пароль обязателен');
     }
     if (!VALID_ROLES.includes(this.role)) {
       errors.push(`Роль должна быть одной из: ${VALID_ROLES.join(', ')}`);
